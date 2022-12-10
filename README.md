@@ -146,36 +146,36 @@ iface eth0 inet dhcp
 ```
 
 ### Routing
-
+```
 route add -net 192.218.0.16 netmask 255.255.255.248 gw 192.218.0.2
 route add -net 192.218.0.128 netmask 255.255.255.128 gw 192.218.0.2
 route add -net 192.218.4.0 netmask 255.255.252.0 gw 192.218.0.2
 route add -net 192.218.0.24 netmask 255.255.255.248 gw 192.218.0.6
 route add -net 192.218.2.0 netmask 255.255.254.0 gw 192.218.0.6
 route add -net 192.218.1.0 netmask 255.255.255.0 gw 192.218.0.6
-
+```
 
 ### Setting DHCP Relay
 Pada strix, ostania, westalis
 - Install aplikasi isc-dhcp-relay
-  
+``` 
   apt-get install isc-dhcp-relay -y
-  
+```
 - Edit file `/etc/default/isc-dhcp-relay`
 - Restart isc-dhcp-relay
-  
+```
   service isc-dhcp-relay restart
-  
+``` 
   
 ### Setting DHCP Server
 Pada Wise
 - Install aplikasi isc-dhcp-server.
-
+```
 apt-get install isc-dhcp-server -y
-
+```
 - Edit file `/etc/default/isc-dhcp-server`
 - Edit file `/etc/dhcp/dhcpd.conf` untuk menambahkan subnet sebagai berikut:
-
+```
 subnet 192.218.0.16 netmask 255.255.255.248 {
 }
 subnet 192.218.0.128 netmask 255.255.255.128 {
@@ -210,23 +210,23 @@ subnet 192.218.1.0 netmask 255.255.255.0 {
     default-lease-time 600;
     max-lease-time 7200;
 }
-
+```
 - Restart isc-dhcp-server.
-
+```
 service isc-dhcp-server restart
-
+```
 
 ### Setting DNS Server
 Pada Eden
 - Install aplikasi bind9.
-
+```
 apt-get install bind9 -y
-
+```
 - Edit file `/etc/bind/named.conf.options`
 - Restart bind9.
-
+```
 service bind9 restart
-
+```
 
 ### Soal 1
 Agar topologi yang kalian buat dapat mengakses keluar, kalian diminta untuk
@@ -235,8 +235,7 @@ MASQUERADE.
 
 ### Jawaban
 *STRIX*
-
+```
 iptables -t nat -A POSTROUTING -s 192.218.0.0/16 -o eth0 -j SNAT --to-source (ip eth0)
-
+```
 - ip eth0 didapatkan dengan menjalankan command ip a pada Strix.
-
