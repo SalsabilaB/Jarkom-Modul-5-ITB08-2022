@@ -7,6 +7,6 @@
 | Muhammad Rifqi Fernanda   | 5027201050 |
 | Gilang Bayu Gumantara     | 5027201062 | 
 
-## Topologi CPT
+## Topologi 
 ---
 ![topologi5](https://user-images.githubusercontent.com/90242686/206859449-2ee7910e-77ad-4512-b8a7-491e474745f0.jpg)
